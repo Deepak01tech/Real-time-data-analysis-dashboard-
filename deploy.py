@@ -198,6 +198,39 @@ with col3:
 
 
 ###################
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+# Function to plot the histogram for top states
+def plot_top_states_histogram(num_states):
+    # Get the top states with the highest number of orders
+    top_states = data['ship_state'].value_counts().nlargest(num_states)
+
+    # Plotting the histogram
+    fig, ax = plt.subplots(figsize=(10, 6))
+    top_states.plot(kind='bar', ax=ax)
+
+    # Annotate each bar with its order count
+    for i, count in enumerate(top_states):
+        ax.text(i, count + 1, str(count), ha='center', va='bottom')
+
+    ax.set_title(f'Top {num_states} States with Highest Number of Orders')
+    ax.set_xlabel('State')
+    ax.set_ylabel('Number of Orders')
+    ax.set_xticklabels(top_states.index, rotation=45)
+    plt.tight_layout()
+    st.pyplot(fig)
+
+# Streamlit UI
+st.title('Top States with Highest Number of Orders')
+
+# Slider to select the number of states
+num_states = st.slider('Select Number of States', min_value=1, max_value=50, value=10, step=1)
+
+# Plot the histogram for selected number of states
+plot_top_states_histogram(num_states)
 
 
 
