@@ -1,4 +1,5 @@
 Deployment link:-https://dataanalysisdashboard3223.streamlit.app/
+
 The ARIMA (AutoRegressive Integrated Moving Average) model is a popular and widely used time series forecasting technique. It's particularly effective for modeling univariate time series data that exhibits a trend or seasonality. Here's a breakdown of how the ARIMA model works and how it's used:
 
 AutoRegressive (AR) Component:
